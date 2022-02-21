@@ -42,8 +42,20 @@ const serverlessConfiguration: AWS = {
       events: [
         {
           http: {
-            path: "CreateUsersToDo",
+            path: "CreateUsersToDo/{user_id}",
             method: "post",
+            cors: true,
+          },
+        },
+      ],
+    },
+    ShowUsersToDo: {
+      handler: "src/functions/ShowUserToDo.handler",
+      events: [
+        {
+          http: {
+            path: "ShowUserToDo/{user_id}",
+            method: "get",
             cors: true,
           },
         },
